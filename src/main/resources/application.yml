@@ -1,0 +1,30 @@
+server:
+  port: ${PORT:8001}
+spring:
+  profiles:
+    active: ${PROFILE:dev}
+  data:
+    web:
+      pageable:
+        one-indexed-parameters: true # set Pageable begin index to 1
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      database: ${REDIS_NUMBER:15}
+      password:
+
+
+
+failureCounter: ${FAILURE_COUNTER:2}
+processor-fail-over-list:  ${FAIL_OVER_DESTINATIONS:upslagency2,kimono,echoserver}
+processor-fail-over-international-list: ${FAIL_OVER_INTERNATIONAL_DESTINATIONS:mastercard}
+notification:
+  base-url: ${NOTIFICATION_SERVICE_URL:https://dev-omnipro-api.blusalt.net/api/notification-service/notification/email/general}
+  clientId: ${NOTIFICATION_CLIENT_ID:Omnff22feb}
+  clientSecret: ${NOTIFICATION_CLIENT_SECRET:45c402e22360a1b368fed63bc7dd16}
+  recipients:  ${NOTIFICATION_RECIPIENTS:clientservices@blusalt.net }
+  cc:  ${NOTIFICATION_CC:joshuao@blusalt.net, victor@blusalt.net, quadrio@blusalt.net, savoseh@blusalt.net}
+destination:
+  recovery:
+    interval:
+      ms: 1800000

@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><mux class="org.jpos.q2.iso.QMUX" logger="Q2" name="upslinternational" realm="upslinternational-mux"><space>upslinternational</space><in>upslinternational.out</in><out>upslinternational.in</out><ready>upslinternational-channel.ready</ready></mux>

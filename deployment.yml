@@ -1,0 +1,200 @@
+---
+apiVersion: v1
+kind: Service
+metadata:  
+  name: core-processor-public-ssl
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-interval: "300"
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-protocol: ssl
+spec:
+  selector:    
+    app: core-processor
+  type: LoadBalancer
+  ports:  
+  - name: http
+    port: 80
+    targetPort: 5339
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:  
+  name: core-processor-public
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-interval: "300"
+spec:
+  selector:    
+    app: core-processor
+  type: LoadBalancer
+  ports:  
+  - name: http
+    port: 80
+    targetPort: 5335
+    protocol: TCP
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: core-processor
+spec:
+  type: ClusterIP
+  selector:
+    app: core-processor
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 8001
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: core-processor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: core-processor
+  template:
+    metadata:
+      labels:
+        app: core-processor
+    spec:
+      containers:
+        - name: core-processor
+          image: replace_with_image
+          ports:
+            - containerPort: 8001
+              name: server-port
+              protocol: TCP
+            - containerPort: 5335
+              name: plain-port
+              protocol: TCP
+            - containerPort: 5339
+              name: ssl-port
+              protocol: TCP
+          env:
+            - name: PROFILE
+              valueFrom:
+                configMapKeyRef:
+                  name: core-processor-config
+                  key: profile
+
+            - name: PLAIN_SERVER_PORT
+              valueFrom:
+                configMapKeyRef:
+                 name: core-processor-config
+                 key:  plain_server_port
+
+            - name: SSL_SERVER_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: core-processor-config
+                  key: ssl_server_port
+
+            - name: JDBC_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: core-processor-config
+                  key: jdbc_datasource_url
+
+            - name: JDBC_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: core-processor-secret
+                  key: jdbc_datasource_username
+
+            - name: JDBC_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: core-processor-secret
+                  key: jdbc_datasource_password
+
+            - name: COMPONENT1
+              valueFrom:
+                secretKeyRef:
+                  name: core-processor-secret
+                  key: component1
+
+            - name: COMPONENT2
+              valueFrom:
+                secretKeyRef:
+                  name: core-processor-secret
+                  key: component2
+
+            - name: SESSION_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: core-processor-secret
+                  key: session_key
+
+            - name: DEFAULT_ROUTE
+              valueFrom:
+                configMapKeyRef:
+                  name: core-processor-config
+                  key: default_route
+
+            - name: TRANSACTION_TIMEOUT
+              valueFrom:
+                configMapKeyRef:
+                  name: core-processor-config
+                  key: transaction_timeout
+
+            - name: RABBIT_ADDRESSES
+              valueFrom:
+                secretKeyRef:
+                  name: core-processor-secret
+                  key: rabbit_addresses
+            - name: REDIS_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: core-processor-config
+                  key: redis_host
+
+            - name: REDIS_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: core-processor-config
+                  key: redis_port
+
+            - name: REDIS_NUMBER
+              valueFrom:
+                configMapKeyRef:
+                  name: core-processor-config
+                  key: redis_number
+
+
+            - name: NOTIFICATION_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: core-processor-secret
+                  key: notification_client_id
+
+            - name: NOTIFICATION_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: core-processor-secret
+                  key: notification_client_secret
+
+            - name: FAILURE_COUNTER
+              valueFrom:
+                configMapKeyRef:
+                  name: core-processor-config
+                  key: failure_counter
+
+            - name: NOTIFICATION_CC
+              valueFrom:
+                configMapKeyRef:
+                  name: core-processor-config
+                  key: notification_cc
+
+            - name: NOTIFICATION_RECIPIENTS
+              valueFrom:
+                configMapKeyRef:
+                  name: core-processor-config
+                  key: notification_recipients
+
+
+
+
+

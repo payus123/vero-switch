@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><mux class="org.jpos.q2.iso.QMUX" logger="Q2" name="purepay" realm="purepay-mux"><space>purepay</space><in>purepay.out</in><out>purepay.in</out><ready>purepay-channel.ready</ready></mux>

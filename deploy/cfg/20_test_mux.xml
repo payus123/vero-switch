@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><mux class="org.jpos.q2.iso.QMUX" logger="Q2" name="test" realm="test-mux"><space>test</space><in>test.out</in><out>test.in</out><ready>test-channel.ready</ready></mux>

@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><mux class="org.jpos.q2.iso.QMUX" logger="Q2" name="gigpaytest" realm="gigpaytest-mux"><space>gigpaytest</space><in>gigpaytest.out</in><out>gigpaytest.in</out><ready>gigpaytest-channel.ready</ready></mux>

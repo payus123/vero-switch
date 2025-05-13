@@ -1,0 +1,40 @@
+plain:
+  server:
+    port : ${PLAIN_SERVER_PORT:5335}
+ssl:
+  server:
+    port: ${SSL_SERVER_PORT:5339}
+transactionTimeout : ${TRANSACTION_TIMEOUT:90000L}
+deployDir: deploy/cfg
+spring:
+  datasource:
+    url: ${JDBC_DATASOURCE_URL:jdbc:postgresql://payments-dev-db.coio31sa3xyg.eu-west-1.rds.amazonaws.com/tms_processor}
+    username: ${JDBC_DATASOURCE_USERNAME:root}
+    password: ${JDBC_DATASOURCE_PASSWORD:root}
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: validate
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+  main:
+    allow-bean-definition-overriding: true
+
+
+
+ctmk:
+  component1 : ${COMPONENT1:10101010101010101010101010101010}
+  component2 : ${COMPONENT2:01010101010101010101010101010101}
+sessionKey : ${SESSION_KEY:01010101010101010101010101010101}
+blusaltMerchantNameAndLocation: BLUSALT                LA           LANG
+defaultRoute: ${DEFAULT_ROUTE:upslagency1}
+
+
+
+failureCounter: ${FAILURE_COUNTER:5}
+notification:
+  base-url: ${NOTIFICATION_SERVICE_URL:https://dev-omnipro-api.blusalt.net/api/notification-service/notification/email/general}
+  clientId: ${NOTIFICATION_CLIENT_ID:Test}
+  clientSecret: ${NOTIFICATION_CLIENT_SECRET:Test}
+  recipients: ${NOTIFICATION_RECIPIENTS:clientservices@blusalt.net }
+  cc: ${NOTIFICATION_CC:joshuao@blusalt.net, victor@blusalt.net, quadrio@blusalt.net, savoseh@blusalt.net}

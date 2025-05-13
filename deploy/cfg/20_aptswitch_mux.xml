@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><mux class="org.jpos.q2.iso.QMUX" logger="Q2" name="aptswitch" realm="aptswitch-mux"><space>aptswitch</space><in>aptswitch.out</in><out>aptswitch.in</out><ready>aptswitch-channel.ready</ready></mux>

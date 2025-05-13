@@ -1,0 +1,32 @@
+plain:
+ server:
+    port : ${PLAIN_SERVER_PORT:5335}
+ssl:
+  server:
+    port: ${SSL_SERVER_PORT:5339}
+transactionTimeout : ${TRANSACTION_TIMEOUT:90000}
+deployDir: deploy/cfg
+spring:
+  datasource:
+    url: ${JDBC_DATASOURCE_URL:jdbc:postgresql://localhost:5432/processor_service}
+    username: ${JDBC_DATASOURCE_USERNAME:postgres}
+    password: ${JDBC_DATASOURCE_PASSWORD:password}
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: validate
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+  main:
+   allow-bean-definition-overriding: true
+  rabbitmq:
+    addresses: ${RABBIT_ADDRESSES:amqp://localhost:5672}
+
+ctmk:
+ component1 : ${COMPONENT1:10101010101010101010101010101010}
+ component2 : ${COMPONENT2:01010101010101010101010101010101}
+sessionKey : ${SESSION_KEY:01010101010101010101010101010101}
+blusaltMerchantNameAndLocation: BLUSALT                LA           LANG
+defaultRoute: ${DEFAULT_ROUTE:echoserver}
+
+

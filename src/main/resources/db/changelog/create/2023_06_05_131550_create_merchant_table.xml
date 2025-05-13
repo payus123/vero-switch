@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd">
+
+    <changeSet id="1685967410874-1" author="victorvero">
+        <createTable tableName="merchant">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_merchant"/>
+            </column>
+            <column name="uuid" type="varchar(255)">
+                <constraints unique="true"/>
+            </column>
+            <column name="created_at" type="timestamptz" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_at" type="timestamptz" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="true"/>
+            </column>
+            <column name="merchant_id" type="varchar(255)">
+                <constraints unique="true"/>
+            </column>
+            <column name="institution_id" type="BIGINT"/>
+            <column name="merchant_unique_reference" type="VARCHAR(255)"/>
+            <column name="country_code" type="VARCHAR(4)"/>
+            <column name="currency_code" type="VARCHAR(255)"/>
+            <column name="merchant_category_code" type="VARCHAR(255)"/>
+            <column name="is_active" type="BOOLEAN"/>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="institution_id" baseTableName="merchant" constraintName="FK_MERCHANT_ON_INSTITUTION" referencedColumnNames="id" referencedTableName="institutions"/>
+    </changeSet>
+</databaseChangeLog>

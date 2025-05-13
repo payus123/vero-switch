@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><mux class="org.jpos.q2.iso.QMUX" logger="Q2" name="zamalek" realm="zamalek-mux"><space>zamalek</space><in>zamalek.out</in><out>zamalek.in</out><ready>zamalek-channel.ready</ready></mux>

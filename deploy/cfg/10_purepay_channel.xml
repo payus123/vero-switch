@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<channel-adaptor logger="Q2" name="purepay-channel" realm="purepay-channel">
+    <channel class="org.jpos.iso.channel.XMLChannel" logger="Q2" packager="org.jpos.iso.packager.XML2003Packager"
+             realm="purepay-channel">
+        <property name="packager-realm" value="purepay-channel-packager"/>
+        <property name="host" value="197.02223.012"/>
+        <property name="port" value="97"/>
+        <property name="timeout" value="300000"/>
+    </channel>
+    <space>purepay</space>
+    <in>purepay.in</in>
+    <out>purepay.out</out>
+    <timeout>90000</timeout>
+</channel-adaptor>

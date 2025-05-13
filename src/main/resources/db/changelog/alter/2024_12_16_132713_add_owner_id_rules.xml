@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd">
+
+
+    <changeSet id="1734352070643-1" author="victorvero">
+        <preConditions onFail="MARK_RAN">
+            <columnExists tableName="rules" columnName="institution_id"/>
+        </preConditions>
+        <dropColumn tableName="rules" columnName="institution_id"/>
+    </changeSet>
+
+    <changeSet id="17343521110643-1" author="victorvero">
+        <preConditions onFail="MARK_RAN">
+            <columnExists tableName="default_international_rules" columnName="institution_id"/>
+        </preConditions>
+        <dropColumn tableName="default_international_rules" columnName="institution_id"/>
+    </changeSet>
+
+    <changeSet id="173413521110643-1" author="victorvero">
+        <preConditions onFail="MARK_RAN">
+            <columnExists tableName="default_rules" columnName="institution_id"/>
+        </preConditions>
+        <dropColumn tableName="default_rules" columnName="institution_id"/>
+    </changeSet>
+
+
+    <changeSet id="1734352070643-2" author="victorvero">
+        <preConditions onFail="MARK_RAN">
+            <columnExists tableName="international_rules" columnName="institution_id"/>
+        </preConditions>
+        <dropColumn tableName="international_rules" columnName="institution_id"/>
+    </changeSet>
+
+    <changeSet id="1734352070642-1" author="victorvero">
+        <addColumn tableName="rules">
+            <column name="owner_id" type="varchar(50)"/>
+        </addColumn>
+        <addColumn tableName="international_rules">
+            <column name="owner_id" type="varchar(50)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="1734352071642-1" author="victorvero">
+        <addColumn tableName="default_rules">
+            <column name="owner_id" type="varchar(50)"/>
+        </addColumn>
+        <addColumn tableName="default_international_rules">
+            <column name="owner_id" type="varchar(50)"/>
+        </addColumn>
+    </changeSet>
+
+
+
+</databaseChangeLog>

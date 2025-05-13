@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><mux class="org.jpos.q2.iso.QMUX" logger="Q2" name="kimono" realm="kimono-mux"><space>kimono</space><in>kimono.out</in><out>kimono.in</out><ready>kimono-channel.ready</ready></mux>

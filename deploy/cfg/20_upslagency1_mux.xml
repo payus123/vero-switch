@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><mux class="org.jpos.q2.iso.QMUX" logger="Q2" name="upslagency1" realm="upslagency1-mux"><space>upslagency1</space><in>upslagency1.out</in><out>upslagency1.in</out><ready>upslagency1-channel.ready</ready></mux>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd">
+
+    <changeSet id="create-destination-pricing-table" author="victorvero">
+        <createTable tableName="destination_pricing">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_destination_pricing"/>
+            </column>
+            <column name="value" type="DECIMAL(19,4)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pricing_type" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="upper_bound" type="DECIMAL(19,4)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="uuid" type="VARCHAR(50)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column name="lower_bound" type="DECIMAL(19,4)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="transaction_type" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="currency_code" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="destination" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="timestamptz" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_at" type="timestamptz" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="unique-transaction-type-destination" author="victorvero">
+        <addUniqueConstraint
+                tableName="destination_pricing"
+                columnNames="transaction_type, destination,currency_code"
+                constraintName="uk_transaction_destination"/>
+    </changeSet>
+
+    <changeSet id="add-btree-index-transaction-type" author="victorvero">
+        <createIndex indexName="idx_transaction_type"
+                     tableName="destination_pricing">
+            <column name="transaction_type"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

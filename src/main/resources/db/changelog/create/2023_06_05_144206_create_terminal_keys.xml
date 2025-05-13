@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd">
+
+    <changeSet id="1685972660579-1" author="victorvero">
+        <createTable tableName="terminal_key">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_terminal_key"/>
+            </column>
+            <column name="uuid" type="varchar(255)">
+                <constraints unique="true"/>
+            </column>
+            <column name="created_at" type="timestamptz" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_at" type="timestamptz" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="true"/>
+            </column>
+            <column name="tmk" type="VARCHAR(255)"/>
+            <column name="tmk_kcv" type="VARCHAR(255)"/>
+            <column name="tsk" type="VARCHAR(255)"/>
+            <column name="tsk_kcv" type="VARCHAR(255)"/>
+            <column name="tpk" type="VARCHAR(255)"/>
+            <column name="tpk_kcv" type="VARCHAR(255)"/>
+            <column name="terminal_id" type="varchar(8)">
+                <constraints unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

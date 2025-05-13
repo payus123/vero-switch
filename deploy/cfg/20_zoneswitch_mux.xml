@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><mux class="org.jpos.q2.iso.QMUX" logger="Q2" name="zoneswitch" realm="zoneswitch-mux"><space>zoneswitch</space><in>zoneswitch.out</in><out>zoneswitch.in</out><ready>zoneswitch-channel.ready</ready></mux>

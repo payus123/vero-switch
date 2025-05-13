@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd">
+
+    <changeSet id="173995956216-4" author="victorvero">
+        <sqlFile path="db/changelog/bins_insert.sql"/>
+    </changeSet>
+
+
+
+    <changeSet id="1739959562716-4" author="victorvero">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="bins" indexName="idx_bins_currency"/>
+            </not>
+        </preConditions>
+        <createIndex indexName="bins_currency" tableName="bins">
+            <column name="currency"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="1739959562716-5" author="victorvero">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="bins" indexName="idx_bins_bank"/>
+            </not>
+        </preConditions>
+        <createIndex indexName="idx_bins_bank" tableName="bins">
+            <column name="bank"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="1739959562716-6" author="victorvero">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="bins" indexName="idx_bins_country_name"/>
+            </not>
+        </preConditions>
+        <createIndex indexName="idx_bins_country_name" tableName="bins">
+            <column name="country_name"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="1739959562116-6" author="victorvero">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="bins" indexName="idx_bins_bins"/>
+            </not>
+        </preConditions>
+        <createIndex indexName="idx_bins_bins" tableName="bins">
+            <column name="bin"/>
+        </createIndex>
+    </changeSet>
+
+
+</databaseChangeLog>

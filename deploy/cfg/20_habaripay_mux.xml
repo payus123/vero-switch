@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><mux class="org.jpos.q2.iso.QMUX" logger="Q2" name="habaripay" realm="habaripay-mux"><space>habaripay</space><in>habaripay.out</in><out>habaripay.in</out><ready>habaripay-channel.ready</ready></mux>
