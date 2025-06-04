@@ -28,8 +28,8 @@ Once the image is built, you can run the container with:
 
 bash
 Copy
-docker run -d -p 8000:8000 vero-switch
-This will start the container in detached mode, mapping port 8000 on the host to port 8000 on the container (you can modify the ports as needed).
+docker run -d -p 5335:5335 vero-switch
+This will start the container in detached mode, mapping port 5335 on the host to port 5335 on the container (you can modify the ports as needed).
 
 Step 4: Configure TCP/IP for ISO 8583 Messages
 The server is now set up to receive ISO 8583 messages via TCP/IP. You will need to configure your JPOS client or any other ISO 8583 message-sending tool to point to the running server.
